@@ -1,27 +1,42 @@
 # Rul1an
 
-Researcher, engineer, developer, and AI consultant working at Ignite Group.
+I build Assay: evidence receipts and CI review artifacts for agent systems.
 
-I build Assay: CI-native evidence tooling for agent systems.
+My work sits on one boundary:
 
-Assay turns observed test-run behavior into bounded, reviewable artifacts:
-tool calls, filesystem and network access, policy decisions, eval receipts,
-and other small claims that can survive code review.
+> what was observed, what artifact proves it, and what claim it does not make.
 
-I care about precise boundaries:
-what was observed, where it came from, what the artifact proves,
-and what it explicitly does not prove.
+Right now I am focused on agent-runtime evidence: MCP tool calls, policy
+decisions, eval outputs, runtime decisions, and model-inventory artifacts that
+can survive code review without becoming broad trust scores.
 
-Current focus:
+## Start Here
 
-- Rust CLI tooling for evidence receipts
-- GitHub Actions for PR-native review surfaces
-- MCP and agent capability boundaries
-- Python/TypeScript harnesses
-- eBPF/Landlock-shaped runtime constraints
+- [`assay`](https://github.com/Rul1an/assay) - Rust CLI for evidence bundles,
+  receipts, Trust Basis claims, and reviewable CI artifacts.
+- [`Evidence Receipts in Action`](https://github.com/Rul1an/assay/discussions/1235)
+  - the short proof-oriented walkthrough for the current three receipt families.
+- [`assay-action`](https://github.com/Rul1an/assay-action) - GitHub Action for
+  verifying Assay evidence artifacts and publishing PR-native reports.
+- [`Assay-Harness`](https://github.com/Rul1an/Assay-Harness) - approval-aware
+  recipes and gates over Assay receipts.
 
-Start here:
+## Current Threads
 
-- [`assay`](https://github.com/Rul1an/assay) — Rust CLI and receipt model
-- [`assay-action`](https://github.com/Rul1an/assay-action) — GitHub Action for reviewable evidence artifacts
-- [`Assay-Harness`](https://github.com/Rul1an/Assay-Harness) — recipes and gates over Assay receipts
+I contribute upstream design feedback where agent systems need clearer evidence
+boundaries:
+
+- OpenTelemetry GenAI lifecycle events: durable pause, checkpoint, and resume
+  correlation for long-running agents.
+- MCP and gateway audit trails: separating transport success from tool outcome.
+- Tool audit hooks: small JSONL surfaces first, signing and receipts as optional
+  adapters.
+- Evidence bundle design: references and digests over payload stores.
+
+## What I Care About
+
+- bounded artifacts over broad claims
+- explicit redaction and omission states
+- reviewable diffs instead of scalar trust scores
+- CI-native proof surfaces that downstream tools can consume
+- standards and OSS work that keeps "observed" separate from "true"
